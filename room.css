@@ -1,0 +1,495 @@
+/* Mambrino King: the room. The page is the place, not a document about it.
+   Every surface is one of the room's materials (their warm wood tables, plaster walls, tufted oxblood booths), and
+   the room's own things sit around the edges of the content: the string of bulbs they hang across the ceiling, a
+   gold-rimmed coffee cup, a tray from the chocolate case, a bottle of red, gilded frames like the ones on their walls.
+   All pieces are photoreal renders (work\room\room.py) or CC0 Poly Haven textures. Light comes from the top left.
+   Loads after styles.css and menu.css. No hover effects. */
+:root {
+  --holder: #14110F;                       /* the black menu holder their lunch menu comes in */
+  --lh: clamp(7.6rem, 24vw, 11.5rem);      /* height of the string of bulbs; one swag is 4x this wide */
+  --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .14  0 0 0 0 .09  0 0 0 0 .06  0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- the string of bulbs (one swag, repeated sideways) and the light it throws ---------- */
+.strand, .strand-glow { position: absolute; left: 0; right: 0; top: 0; pointer-events: none; }
+.strand { height: var(--lh); z-index: 3; background: url("assets/room/lights.webp") center top / calc(var(--lh) * 4) 100% repeat-x; }
+.strand-glow { height: calc(var(--lh) * 3); z-index: 2; mix-blend-mode: screen;
+  --g: rgba(255, 190, 112, .62), rgba(255, 150, 62, .30) 12%, rgba(255, 136, 48, .13) 38%, rgba(255, 130, 40, 0) 72%;
+  background:
+    radial-gradient(circle calc(var(--lh) * 1.5) at calc(var(--lh) * .52) calc(var(--lh) * .56), var(--g)),
+    radial-gradient(circle calc(var(--lh) * 1.5) at calc(var(--lh) * 1.48) calc(var(--lh) * .80), var(--g)),
+    radial-gradient(circle calc(var(--lh) * 1.5) at calc(var(--lh) * 2.52) calc(var(--lh) * .80), var(--g)),
+    radial-gradient(circle calc(var(--lh) * 1.5) at calc(var(--lh) * 3.48) calc(var(--lh) * .56), var(--g));
+  background-size: calc(var(--lh) * 4) 100%; background-position: center top; background-repeat: repeat-x; }
+/* the bulbs come on when you arrive, then breathe very slightly */
+html[data-motion="on"] .strand-glow { animation: bulbs-on 1.6s .2s both, bulbs-live 6s 2s ease-in-out infinite alternate; }
+@keyframes bulbs-on { 0% { opacity: 0; } 18% { opacity: .55; } 26% { opacity: .2; } 40% { opacity: .8; } 100% { opacity: 1; } }
+@keyframes bulbs-live { from { opacity: 1; } to { opacity: .9; } }
+
+/* ---------- their tables: warm wood, seen from above ---------- */
+.sheet-wrap, .card { position: relative; overflow: hidden; color: var(--ink);
+  background:
+    radial-gradient(120% 60% at 18% 0%, rgba(255, 186, 110, .20), rgba(255, 170, 90, 0) 62%),
+    linear-gradient(180deg, rgba(20, 9, 4, .30), rgba(20, 9, 4, .10) 30%, rgba(20, 9, 4, .46)),
+    url("assets/room/wood.webp") center top / 34rem auto;
+  box-shadow: inset 0 1.2rem 1.6rem -1rem rgba(0, 0, 0, .7), inset 0 -1.4rem 1.8rem -1rem rgba(0, 0, 0, .75); }
+.sheet-wrap { padding: clamp(6.4rem, 21vw, 8.5rem) var(--gutter) clamp(10.5rem, 40vw, 12rem); }
+.card { padding: clamp(6.4rem, 21vw, 8.5rem) var(--gutter) clamp(10rem, 38vw, 12rem); }
+
+/* the menu: printed paper in the black holder with corner pockets, lying on the table */
+.sheet, .card-sheet { --pad: clamp(1rem, 3.4vw, 2.8rem); --c: 1.55rem;
+  position: relative; z-index: 2; max-width: 60rem; margin: 0 auto; border: 0; padding: 2.5rem var(--pad) 2.7rem;
+  background:
+    linear-gradient(135deg, var(--holder) 0 var(--c), rgba(0, 0, 0, .22) var(--c), transparent calc(var(--c) + 3px)) left top / 5rem 5rem no-repeat,
+    linear-gradient(225deg, var(--holder) 0 var(--c), rgba(0, 0, 0, .22) var(--c), transparent calc(var(--c) + 3px)) right top / 5rem 5rem no-repeat,
+    linear-gradient(45deg, var(--holder) 0 var(--c), rgba(0, 0, 0, .22) var(--c), transparent calc(var(--c) + 3px)) left bottom / 5rem 5rem no-repeat,
+    linear-gradient(315deg, var(--holder) 0 var(--c), rgba(0, 0, 0, .22) var(--c), transparent calc(var(--c) + 3px)) right bottom / 5rem 5rem no-repeat,
+    linear-gradient(180deg, rgba(255, 244, 222, .5), rgba(255, 244, 222, 0) 40%),
+    var(--paper-noise), var(--bone);
+  box-shadow: 0 0 0 .5rem var(--holder), 0 0 0 calc(.5rem + 1px) rgba(255, 255, 255, .07),
+    .5rem 1.3rem 2.4rem rgba(0, 0, 0, .6), .15rem .3rem .5rem rgba(0, 0, 0, .55); }
+/* the printed double rule, now inside the paper's edge */
+.sheet::before, .sheet::after, .card-sheet::before, .card-sheet::after { left: var(--pad); right: var(--pad); height: 7px; background: none; }
+.sheet::before, .card-sheet::before { top: 1.25rem; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--ink); }
+.sheet::after, .card-sheet::after { bottom: 1.25rem; border-bottom: 3px solid var(--ink); border-top: 1px solid var(--ink); }
+
+/* the things on the table. Sizes are of the whole image; each render carries its own soft shadow. */
+.decor { position: absolute; z-index: 3; pointer-events: none; height: auto; max-width: none; user-select: none; }
+.decor-cup { width: clamp(11.5rem, 44vw, 19rem); top: clamp(-2.2rem, -5vw, -1.2rem); right: clamp(-3.4rem, -8vw, -1.5rem); }
+.decor-bottle { width: clamp(15rem, 60vw, 24rem); bottom: clamp(-2.6rem, -7vw, -1.6rem); right: clamp(-5.4rem, -15vw, -3.6rem); transform: rotate(-27deg); }
+.decor-bonbons { width: clamp(11.5rem, 46vw, 18rem); bottom: clamp(1rem, 5vw, 1.8rem); left: clamp(-1.8rem, -4vw, -.4rem); transform: rotate(-7deg); }
+.sheet-wrap .sheet, .card .card-sheet { z-index: 2; }
+/* the cup sits on the table beside the menu, not on the words */
+.sheet-head, .card-head { padding-top: 1.6rem; }
+
+/* ---------- their walls: charcoal paint, gold frames, under the copper-red ceiling ---------- */
+.made, .staff, .story, .street, .voices {
+  background:
+    linear-gradient(rgba(34, 20, 10, .34), rgba(34, 20, 10, .34)),
+    url("assets/room/plaster.webp") center top / 34rem auto; }
+.made { position: relative; padding-top: calc(var(--lh) + 3.4rem); }
+/* the ceiling's edge, where the bulbs are hooked */
+.made::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: .9rem; z-index: 3;
+  background: linear-gradient(180deg, #7E3320, #9A4428 55%, #5E2414); box-shadow: 0 .5rem .9rem rgba(0, 0, 0, .55); }
+.made .strand, .made .strand-glow { top: .7rem; }
+.made > *:not(.strand):not(.strand-glow) { position: relative; z-index: 4; }
+.voices { border-top: 0; }
+.story { border-top: 0; max-width: none; padding-inline: max(var(--gutter), calc((100% - 80rem) / 2 + var(--gutter))); }
+
+/* photos hang in gilded frames, like the pictures along their wall */
+.mp-bread, .mp-board, .staff-main, .staff-row figure {
+  border: clamp(.75rem, 2.3vw, 1.7rem) solid #8A6223; border-image: url("assets/room/frame.webp") 66 / 1 / 0 round;
+  background: #0c0806; filter: drop-shadow(.35rem .8rem .7rem rgba(0, 0, 0, .55)); }
+.staff-row figure { border-width: clamp(.6rem, 1.5vw, 1.1rem); }
+.staff-row { gap: clamp(1rem, 2.4vw, 2rem); align-items: start; }
+.staff-row figure:nth-child(2) { margin-top: 1.2rem; }
+.staff-main { box-sizing: border-box; }
+
+/* ---------- their booths: tufted oxblood leather, under the bulbs ---------- */
+.visit, .hours { position: relative; max-width: none; margin: 0; overflow: hidden;
+  padding: calc(var(--lh) + 2.4rem) max(var(--gutter), calc((100% - 72rem) / 2 + var(--gutter))) 4rem;
+  background:
+    linear-gradient(180deg, rgba(14, 6, 4, .50), rgba(14, 6, 4, .30) 35%, rgba(14, 6, 4, .66)),
+    url("assets/room/leather.webp") center top / 15rem auto;
+  box-shadow: inset 0 1.4rem 1.6rem -1rem rgba(0, 0, 0, .8); }
+.visit > *:not(.strand):not(.strand-glow), .hours > *:not(.strand):not(.strand-glow) { position: relative; z-index: 4; }
+.visit .hours-list, .hours .hours-list { border-top-color: rgba(237, 227, 209, .28); }
+.visit .hours-list div, .hours .hours-list div { border-bottom-color: rgba(237, 227, 209, .28); text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+.visit .hours-list dt, .hours .hours-list dt, .visit .address, .hours .address { color: var(--bone); }
+.visit-title, .hours-title { text-shadow: 0 2px 3px rgba(0, 0, 0, .55); }
+.visit .btn, .hours .btn { background: rgba(20, 12, 9, .78); border-color: rgba(201, 160, 74, .7); }
+.visit .btn-gold, .hours .btn-gold { background: var(--gold); border-color: var(--gold); }
+
+/* the bar front at the bottom of every page */
+.foot { border-top: 0; position: relative;
+  background: linear-gradient(180deg, rgba(10, 5, 3, .82), rgba(10, 5, 3, .9)), url("assets/room/wood.webp") center / 34rem auto;
+  box-shadow: inset 0 1.2rem 1.4rem -1rem rgba(0, 0, 0, .9); }
+
+/* race names must fit the narrower paper */
+.races-full .race-name { font-size: clamp(2rem, 1.2rem + 2.2vw, 2.8rem); overflow-wrap: anywhere; }
+
+@media (min-width: 900px) {
+  .races-full { display: block; }          /* two printed columns (not the homepage grid) */
+  .sheet-wrap, .card { padding: 9rem var(--gutter) 13rem; }
+  .decor-cup { top: 1.2rem; right: max(1rem, calc(50% - 46rem)); }
+  .decor-bottle { bottom: -2.6rem; right: max(-2rem, calc(50% - 47rem)); }
+  .decor-bonbons { bottom: 1.6rem; left: max(1.5rem, calc(50% - 40rem)); }
+  .visit, .hours { padding-top: calc(var(--lh) + 3.4rem); padding-bottom: 5.5rem; }
+  .staff-row figure:nth-child(2) { margin-top: 2.4rem; }
+  .staff-row figure:nth-child(3) { margin-top: .8rem; }
+}
+
+/* small credits stay readable on the lighter charcoal wall */
+.made cite, .made-menu span, .staff-src, .street cite, .voices cite, .story-copy .credit { opacity: .95; }
+
+/* ---------- their real food on the table (cut out of their own overhead photos) ----------
+   Each plate sits where its photo allows: the waffle's photo is cropped along one side, so that side tucks under the
+   top bar; the focaccia plate is cropped on the left, so it sits flush with the left edge; the tostada plate is whole. */
+.decor-plate { filter: drop-shadow(.4rem .75rem .65rem rgba(0, 0, 0, .62)); }
+.decor-waffle { width: clamp(10rem, 40vw, 13rem); top: clamp(-4.6rem, -13vw, -3.4rem); left: clamp(-2.6rem, -6vw, -1.4rem); }
+.decor-focaccia { width: clamp(10.5rem, 43vw, 14rem); bottom: clamp(.4rem, 2vw, 1rem); left: 0; }
+.decor-tostada { width: clamp(10.5rem, 43vw, 14rem); bottom: clamp(-.6rem, 0vw, .4rem); right: clamp(-3rem, -8vw, -2rem); }
+.decor-bottle, .decor-bonbons { display: none; }
+.sheet-wrap { padding-bottom: clamp(12.5rem, 50vw, 16rem); }
+.card { padding-bottom: clamp(12.5rem, 50vw, 16rem); }
+
+@media (min-width: 1280px) {
+  /* wide screens: the plates sit down the wood margins beside the menu; the bottle and the chocolates come back */
+  .sheet-wrap, .card { padding: 9rem var(--gutter) 13rem; }
+  .decor-bottle, .decor-bonbons { display: block; }
+  .decor-waffle { width: 17rem; top: -5.4rem; left: max(.5rem, calc(50% - 48rem)); }
+  .decor-focaccia { width: 17rem; left: 0; top: 30%; bottom: auto; }
+  .decor-tostada { width: 17rem; right: max(-3.5rem, calc(50% - 49.5rem)); top: 54%; bottom: auto; }
+}
+
+/* ---------- wall edges (2026-11-11): the room's own things around the wall sections ----------
+   rack.webp: their copper hanging stemware rack (pierced gallery, twisted hanger, wine glasses hung by their feet),
+   one period that repeats sideways, with its own soft shadow on the wall. fig.webp: their fiddle-leaf fig, the plant
+   standing just past the right edge of the page, leaves reaching in. Both rendered in work\room\walls.py. */
+:root { --rk: clamp(13rem, 64vw, 24rem); }   /* height of the rack; one period is 1.5x this wide */
+.staff { position: relative; padding-top: calc(var(--rk) + 1.6rem); }
+.staff::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: .9rem; z-index: 4;
+  background: linear-gradient(180deg, #7E3320, #9A4428 55%, #5E2414); box-shadow: 0 .5rem .9rem rgba(0, 0, 0, .55); }
+.rack { position: absolute; left: 0; right: 0; top: .6rem; height: var(--rk); z-index: 3; pointer-events: none;
+  background: url("assets/room/rack.webp") center top / calc(var(--rk) * 1.5) 100% repeat-x; }
+.staff > *:not(.rack) { position: relative; z-index: 4; }
+
+.fig { position: absolute; z-index: 3; right: 0; width: auto; max-width: none; pointer-events: none; user-select: none; display: none; }
+.story, .street-copy { position: relative; }
+.story { overflow: hidden; }
+.story > *:not(.fig), .street-copy > *:not(.fig) { position: relative; z-index: 4; }
+@media (max-width: 899px) {
+  /* phones: the leaves come in at the top right, beside the trotter, and stop above the words */
+  .story { padding-top: 6.5rem; }
+  .fig-story { display: block; top: .4rem; height: clamp(17rem, 80vw, 20rem); }
+  .story .emblem { width: min(26rem, 62%); }
+}
+@media (min-width: 1100px) {
+  /* wide screens: the plant stands at the right edge, beside the words about the room */
+  .street-copy { position: static; padding-right: clamp(12rem, 20vw, 19rem); }
+  .street { position: relative; overflow: hidden; }
+  .fig-street { display: block; top: 50%; transform: translateY(-50%); height: min(44rem, 94%); }
+}
+@media (min-width: 900px) {
+  .staff { padding-top: calc(var(--rk) + 2.4rem); }
+}
+
+/* their pine wine rack with horseshoes hung on the posts, standing in the left margin beside .made on wide screens
+   only (at 1280 px just its edge shows; from about 1700 px all of it). It fades into the dark lower down the wall. */
+.winerack { display: none; }
+@media (min-width: 1280px) {
+  .made { overflow-x: clip; }
+  .made > img.winerack:not(.strand) { display: block; position: absolute; z-index: 3; pointer-events: none; user-select: none;
+    width: 12rem; height: auto; max-width: none; top: calc(var(--lh) + 1.5rem);
+    left: calc(50% - 36rem - .6rem - 12rem);
+    -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 96%); mask-image: linear-gradient(180deg, #000 62%, transparent 96%); }
+}
+/* where one stretch of wall meets the next, a soft shadow line hides the change in the paint's texture */
+.street, .story, .voices { box-shadow: inset 0 1.8rem 1.5rem -1.5rem rgba(0, 0, 0, .6); }
+
+/* ---------- light and depth (2026-11-11): the room lit the way it is right now ----------
+   assets/room.js sets html[data-light] from their hours and the time in New York: "day" (open, before 16:30),
+   "evening" (open, after 16:30; also the look without JavaScript) or "closed". Each look only re-tints the same
+   materials through these custom properties and turns the bulbs' glow up or down; the daylight from the front window
+   is a soft four-pane patch of light (::after) on the wall sections. Contrast limits (checked on screenshots):
+   gold titles 3:1 and bone text 4.5:1 on the lightest part of each wall, so the day walls are only a little lighter. */
+:root {
+  --wall-tint: rgba(34, 20, 10, .34);
+  --table-glow: rgba(255, 186, 110, .20);
+  --table-shade: rgba(20, 9, 4, .30), rgba(20, 9, 4, .10) 30%, rgba(20, 9, 4, .46);
+  --booth-shade: rgba(14, 6, 4, .50), rgba(14, 6, 4, .30) 35%, rgba(14, 6, 4, .66);
+  --bulbs: none;            /* filter on the string of bulbs */
+  --glow: 1;                /* opacity of the light the bulbs throw */
+  --hero-light: none;       /* filter on the hero's bar photo */
+  --wash: transparent;      /* daylight from the front window on the table and the booths */
+}
+.made, .staff, .story, .street, .voices {
+  background: linear-gradient(var(--wall-tint), var(--wall-tint)), url("assets/room/plaster.webp") center top / 34rem auto; }
+.sheet-wrap, .card {
+  background:
+    linear-gradient(100deg, var(--wash), transparent 70%),
+    radial-gradient(120% 60% at 18% 0%, var(--table-glow), transparent 62%),
+    linear-gradient(180deg, var(--table-shade)),
+    url("assets/room/wood.webp") center top / 34rem auto; }
+.visit, .hours {
+  background: linear-gradient(100deg, var(--wash), transparent 60%), linear-gradient(180deg, var(--booth-shade)), url("assets/room/leather.webp") center top / 15rem auto; }
+.strand { filter: var(--bulbs); }
+.strand-glow { opacity: var(--glow); }
+html[data-motion="on"] .strand-glow { animation: bulbs-on-to 1.6s .2s both, bulbs-live-to 6s 2s ease-in-out infinite alternate; }
+@keyframes bulbs-on-to { 0% { opacity: 0; } 18% { opacity: calc(var(--glow) * .55); } 26% { opacity: calc(var(--glow) * .2); }
+  40% { opacity: calc(var(--glow) * .8); } 100% { opacity: var(--glow); } }
+@keyframes bulbs-live-to { from { opacity: var(--glow); } to { opacity: calc(var(--glow) * .9); } }
+.backplate { filter: var(--hero-light); }
+.open-now { margin-top: 1.1rem; font-size: 1.1875rem; font-style: italic; color: var(--bone); text-shadow: 0 1px 2px rgba(0, 0, 0, .6); }
+@media (min-width: 900px) { .hours-title, .visit-title { grid-row: span 4; } }
+
+/* Day: warm sun through the big front window, and the bulbs still on, as in their own daytime photos.
+   (A first version went cool and grey with the bulbs off; it was the dullest of the three looks, and it is the one a
+   business owner is most likely to open, so it was retuned warm.) */
+html[data-light="day"] {
+  --wall-tint: rgba(46, 31, 18, .30);
+  --window: 255 212 150; --window-a: .17;
+  --table-glow: rgba(255, 222, 165, .26);
+  --wash: rgba(255, 224, 176, .11);
+  --table-shade: rgba(16, 12, 10, .12), rgba(16, 12, 10, 0) 30%, rgba(16, 12, 10, .30);
+  --booth-shade: rgba(12, 8, 8, .40), rgba(12, 8, 8, .20) 35%, rgba(12, 8, 8, .56);
+  --bulbs: saturate(.9) brightness(.96);
+  --glow: .6;
+  --hero-light: brightness(1.14) saturate(1.02);
+}
+html:is([data-light="day"], [data-light="closed"]) :is(.made, .staff, .story, .street)::after {
+  content: ''; position: absolute; z-index: 1; pointer-events: none;
+  left: -6%; top: clamp(4rem, 14vw, 9rem); width: min(78%, 46rem); aspect-ratio: 1 / 1.25;
+  background: linear-gradient(105deg, rgb(var(--window) / var(--window-a)), rgb(var(--window) / calc(var(--window-a) * .6)) 55%, rgb(var(--window) / calc(var(--window-a) * .2)));
+  /* two by two panes with soft edges: the window's mullion and transom are the gaps */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 41%, transparent 47.5% 52.5%, #000 59%, #000 91%, transparent),
+                      linear-gradient(180deg, transparent, #000 8%, #000 42%, transparent 47.5% 52.5%, #000 58%, #000 90%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 41%, transparent 47.5% 52.5%, #000 59%, #000 91%, transparent),
+              linear-gradient(180deg, transparent, #000 8%, #000 42%, transparent 47.5% 52.5%, #000 58%, #000 90%, transparent);
+  transform: skewY(-9deg) rotate(-4deg); transform-origin: 0 0; }
+html:is([data-light="day"], [data-light="closed"]) :is(.story, .street, .voices) { position: relative; }
+html:is([data-light="day"], [data-light="closed"]) :is(.made, .staff, .street, .voices) { overflow-x: clip; }
+html:is([data-light="day"], [data-light="closed"]) :is(.voices > *, .street-photo) { position: relative; z-index: 2; }
+html:is([data-light="day"], [data-light="closed"]) .made::after { top: 30%; }
+html:is([data-light="day"], [data-light="closed"]) .staff::after { left: auto; right: -10%; transform: skewY(9deg) rotate(4deg); transform-origin: 100% 0;
+  top: calc(var(--rk) + 2rem); }
+@media (min-width: 900px) {
+  html:is([data-light="day"], [data-light="closed"]) :is(.made, .staff, .story, .street)::after { width: min(42%, 40rem); }
+  html:is([data-light="day"], [data-light="closed"]) .street::after { left: 50%; }
+}
+
+/* After hours: the room at rest. Cooler, dimmer walls; the bulbs left on low, an ember in each. */
+html[data-light="closed"] {
+  --wall-tint: rgba(12, 16, 30, .56);
+  --window: 150 175 225; --window-a: .07;    /* the street lamp outside, through the front window */
+  --table-glow: rgba(255, 140, 70, .12);
+  --table-shade: rgba(8, 8, 14, .46), rgba(8, 8, 14, .28) 30%, rgba(8, 8, 14, .62);
+  --booth-shade: rgba(8, 4, 8, .62), rgba(8, 4, 8, .44) 35%, rgba(8, 4, 8, .76);
+  --bulbs: brightness(.72) sepia(.5) saturate(2.2) hue-rotate(-14deg);
+  --glow: .5;
+  --hero-light: brightness(.72) saturate(.85) hue-rotate(4deg);
+}
+html[data-light="closed"] .strand-glow { filter: hue-rotate(-16deg) saturate(1.5); }
+
+/* ---------- phones: the room's things reach over the section edges (2026-11-11) ----------
+   The cup and the plates leave the table's edge and lie over the gap to the next wall; the fig reaches up over the
+   corner between "On Main Street" and "The name". Nothing sits on words: each overlap lands in a section's padding. */
+@media (max-width: 899px) {
+  /* The cup and plates stay on the table. (A first try let them hang over the wall above and the street photo
+     below; a saucer seen from above lying on a wall seen from the front read as a sticker, so it was taken out.) */
+  .card { padding-bottom: clamp(12.5rem, 50vw, 16rem); }
+  .street-copy { padding-bottom: 5.5rem; }
+  .story { overflow: clip visible; }
+  .fig-story { top: -5.8rem; height: clamp(20rem, 98vw, 24rem); }
+}
+
+/* ---------- depth (2026-11-11), full motion only ----------
+   room.js moves the edge objects a few pixels against the scroll (the CSS translate property, set per frame from a
+   cached position; no layout reads). The string of bulbs sways very slightly. Nothing moves in the calm version and
+   no text ever moves. */
+html[data-motion="on"] .strand { left: -.5rem; right: -.5rem; transform-origin: 50% 0; will-change: transform;
+  animation: strand-sway 7s ease-in-out infinite alternate; }
+html[data-motion="on"] .hours .strand, html[data-motion="on"] .visit .strand { animation-duration: 8.5s; animation-delay: -3s; }
+@keyframes strand-sway { from { transform: translateX(-2px) rotate(-.18deg); } to { transform: translateX(2px) rotate(.18deg); } }
+.drift { will-change: translate; }
+html[data-motion="on"] .made { overflow-x: clip; }
+
+/* ---------- one walk through the room (2026-11-11) ----------
+   Scrolling is walking in from Main Street and out again. Every seam is a real edge from their room, rendered in
+   work\room\walk.py (Cycles, one warm light from above): under their awning, the bar's worn butcher-block edge, the
+   wall, a table's edge, the table, the front window, the espresso wall, the booth, and out the door into the night. */
+
+/* the butcher block: their honey staves replace the dark walnut on every table (homepage card and menu pages) */
+.sheet-wrap, .card {
+  background:
+    linear-gradient(100deg, var(--wash), transparent 70%),
+    radial-gradient(120% 60% at 18% 0%, var(--table-glow), transparent 62%),
+    linear-gradient(180deg, var(--table-shade)),
+    url("assets/room/butcher.webp") center top / 34rem auto; }
+
+/* arriving: their black awning with MAIN STREET'S LIVING ROOM on the valance and the bulbs strung under it, across
+   the top of the first screen. One awning period (1.2 m, one bulb) repeats; the lettered panel sits in the middle. */
+:root { --aw: clamp(13rem, 58vw, 19rem); }            /* width of one period; the image is 960 x 591 */
+.awning { position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: calc(var(--aw) * .6156); pointer-events: none;
+  background: url("assets/room/awning-sign.webp") center top / calc(var(--aw) * 3) 100% no-repeat,
+              url("assets/room/awning.webp") center top / var(--aw) 100% repeat-x;
+  filter: var(--awning-light, none); transform-origin: 50% 0; }
+/* the warm light each bulb throws (a bulb hangs at every period boundary) */
+.awning::after { content: ''; position: absolute; left: 0; right: 0; top: 40%; height: 90%; mix-blend-mode: screen; opacity: var(--glow);
+  --b: rgba(255, 168, 86, .50), rgba(255, 140, 60, .16) 30%, rgba(255, 130, 40, 0) 70%;
+  background: radial-gradient(circle calc(var(--aw) * .20) at 0 42%, var(--b)), radial-gradient(circle calc(var(--aw) * .20) at 100% 42%, var(--b));
+  background-size: var(--aw) 100%; background-position: center top; background-repeat: repeat-x; }
+.top { z-index: 6; }
+
+/* at the bar: the glass stands on their butcher-block bar top. bar.webp is 2 frame-heights wide; the glass foot's
+   centre is at 0.915 of the frame, which is row 0.225 H of the strip; the worn front edge starts at 0.973 H and the
+   black bar front at 1.141 H, with their teal strip light under the lip. The far part of the top fades out so the
+   name behind stays clear. */
+.bartop { position: absolute; z-index: 1; left: 0; right: 0; top: calc(var(--H) * .690); height: calc(var(--H) * 1.246); pointer-events: none;
+  background: url("assets/room/bar.webp") calc(var(--cx) - var(--H) * .37) top / calc(var(--H) * 2) 100% repeat-x;
+  filter: var(--hero-light);
+  -webkit-mask-image: linear-gradient(transparent calc(var(--H) * .15), #000 calc(var(--H) * .25));
+  mask-image: linear-gradient(transparent calc(var(--H) * .15), #000 calc(var(--H) * .25)); }
+.hero-stage { --H: min(156vw, 72svh); }
+@media (max-width: 899px) {
+  /* the words sit on the black bar front, under the edge */
+  .hero-copy { top: calc(var(--H) * 1.141 + .9rem); }
+  .lede { font-size: clamp(1.85rem, 1.05rem + 3.4vw, 2.6rem); }
+  .sub { margin-top: .55rem; }
+  /* phones: a shorter awning and the name a little lower, so the bulbs hang above the gold letters, not over them */
+  :root { --aw: clamp(11rem, 47vw, 19rem); }
+  .nm-1 { top: calc(var(--H) * .19); }
+  /* the waffle photo is cropped on its left side: keep that side off the screen edge */
+  .card .decor-waffle { left: clamp(-4.4rem, -11.5vw, -3rem); }
+}
+@media (min-width: 900px) { .hero-stage { --H: min(78svh, 1100px); } }
+@media (max-height: 599px) { .hero-stage { --H: min(156vw, 110vh); } }
+
+/* reaching a table: its front edge, 4 cm of honey butcher block with an eased arris, close to you (drawn at more
+   than twice the scale of the top, because it is nearer), and its shadow falling straight down on what is below.
+   tableedge.webp is 1530 x 112 for 0.9 m of edge. */
+.card { --te: 80rem; --teh: calc(var(--te) * 112 / 1530); padding-top: calc(var(--teh) + 7.5rem); }
+.card::before { content: ''; position: absolute; z-index: 4; left: 0; right: 0; top: 0; height: calc(var(--teh) + 4rem); pointer-events: none;
+  background:
+    url("assets/room/tableedge.webp") center top / var(--te) var(--teh) repeat-x,
+    linear-gradient(rgba(12, 6, 3, .78), rgba(12, 6, 3, .42) 30%, rgba(12, 6, 3, 0)) 0 calc(var(--teh) - 2px) / 100% 4rem no-repeat;
+  filter: var(--edge-light, none); }
+@media (min-width: 900px) { .card { --te: 92rem; padding-top: calc(var(--teh) + 8rem); } }
+.card .decor-cup { top: calc(var(--teh) + 1.2rem); }
+.card .decor-waffle { top: calc(var(--teh) - 3.2rem); }
+/* at the front window: the street photo is seen through their window. A black painted frame (winframe.webp,
+   9-slice), the room's string of bulbs reflected faintly in the glass, a soft glare, and their four white vinyl
+   decals (plate, cup, glass, cake) on the glass in the lower corner, as in raw/05 and raw/12. The red umbrella edge
+   is already outside, in the photo. */
+.street { --wf: clamp(1.15rem, 4.6vw, 2.1rem); }
+.street-photo { position: relative; border: var(--wf) solid #0d0c0c; border-image: url("assets/room/winframe.webp") 120 / var(--wf) / 0 stretch;
+  box-shadow: 0 .6rem 1.2rem rgba(0, 0, 0, .55); }
+.street-photo::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background:
+    linear-gradient(112deg, rgba(255, 236, 214, .11) 0 14%, rgba(255, 236, 214, 0) 26% 60%, rgba(255, 236, 214, .06) 66%, rgba(255, 236, 214, 0) 76%),
+    url("assets/room/lights.webp") center 2% / calc(var(--lh) * 4) var(--lh) repeat-x;
+  opacity: .30; mix-blend-mode: screen; transform: scaleX(-1); }
+.street-photo::after { content: ''; position: absolute; z-index: 3; pointer-events: none; left: 6%; bottom: 9%;
+  width: clamp(5.6rem, 25vw, 9.5rem); aspect-ratio: 1; background: url("assets/room/decals.webp") center / contain no-repeat;
+  opacity: .92; transform: scaleX(-1); filter: drop-shadow(0 0 .5px rgba(255, 255, 255, .3)); }
+@media (min-width: 900px) { .street-photo { margin: 2.2rem 0 2.2rem var(--gutter); } }
+
+/* out the door: the facade at night, their gold sign with the white horse (cut from their own photo, raw/03) above
+   the reviews, then their lit shopfront under the awning with the bulbs on (raw/05), and the sidewalk under the
+   footer. In the daytime look the same street is in daylight. */
+.voices { position: relative; padding-top: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 10, 12, var(--night-a, .58)), rgba(10, 10, 12, var(--night-a, .58))),
+    repeating-linear-gradient(90deg, transparent 0 calc(16rem - 2px), rgba(0, 0, 0, .35) calc(16rem - 2px) 16rem),
+    repeating-linear-gradient(180deg, transparent 0 calc(11rem - 2px), rgba(0, 0, 0, .30) calc(11rem - 2px) 11rem),
+    linear-gradient(#6a6b6e, #6a6b6e), url("assets/room/plaster.webp") center top / 34rem auto;
+  background-blend-mode: normal, normal, normal, multiply, normal; box-shadow: none; }
+.facade-sign { display: block; width: min(100%, 64rem); height: auto; margin: 0 auto 1.6rem; filter: var(--sign-light, brightness(.62) contrast(1.06));
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6% 94%, transparent), linear-gradient(180deg, transparent, #000 10% 88%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+  mask-image: linear-gradient(90deg, transparent, #000 6% 94%, transparent), linear-gradient(180deg, transparent, #000 10% 88%, transparent); }
+.voices .ribbon { position: relative; z-index: 2; }
+.foot { padding-top: 0; position: relative;
+  background:
+    radial-gradient(70% 34% at 50% 0%, rgba(255, 170, 90, var(--porch, .22)), rgba(255, 170, 90, 0)),
+    linear-gradient(180deg, rgba(8, 8, 10, var(--walk-a, .62)), rgba(8, 8, 10, calc(var(--walk-a, .62) + .14))),
+    linear-gradient(90deg, transparent 0 calc(50% - 1px), rgba(0, 0, 0, .45) calc(50% - 1px) calc(50% + 1px), transparent 0),
+    url("assets/room/sidewalk.webp") center top / 26rem auto;
+  box-shadow: none; }
+/* the shopfront photo strip that sat above the footer was removed on the owner's request (2026-11-11): the footer now
+   opens straight onto the sidewalk */
+.foot { padding-top: 3.2rem; }
+.foot p { text-shadow: 0 1px 3px rgba(0, 0, 0, .8); }
+html[data-light="day"] { --night-a: .30; --sign-light: brightness(.92); --walk-a: .50; --porch: .08; --shop-light: brightness(.92);
+  --awning-light: brightness(1.18) saturate(.95); --edge-light: none; }
+html[data-light="closed"] { --night-a: .66; --sign-light: brightness(.5) saturate(.85); --walk-a: .70; --porch: .12; --shop-light: brightness(.6) saturate(.9);
+  --awning-light: brightness(.85) saturate(.9); --edge-light: brightness(.8) saturate(.9); }
+
+/* in the booth: the top of the hours is the booth back's rolled, piped leather top under a dark wood capping rail
+   (boothcap.webp, 960 x 307 for 0.6 m, with the roll's shadow on the tufting), so the leather reads as a booth */
+.hours, .visit { --bc: clamp(15rem, 52vw, 22rem); padding-top: calc(var(--lh) + 2.4rem + var(--bc) * .18); }
+.hours::before, .visit::before { content: ''; position: absolute; z-index: 3; left: 0; right: 0; top: 0; height: calc(var(--bc) * 307 / 960); pointer-events: none;
+  background: url("assets/room/boothcap.webp") center top / var(--bc) 100% repeat-x; filter: var(--edge-light, none);
+  -webkit-mask-image: linear-gradient(#000 58%, transparent); mask-image: linear-gradient(#000 58%, transparent); }
+.hours .strand, .hours .strand-glow, .visit .strand, .visit .strand-glow { top: calc(var(--bc) * .12); }
+@media (min-width: 900px) { .hours, .visit { padding-top: calc(var(--lh) + 3.4rem + var(--bc) * .18); } }
+/* out the door: less empty facade under the reviews; the sidewalk's slab joints */
+.voices { padding-bottom: 2.4rem; }
+.foot { background:
+    radial-gradient(70% 34% at 50% 0%, rgba(255, 170, 90, var(--porch, .22)), rgba(255, 170, 90, 0)),
+    linear-gradient(180deg, rgba(8, 8, 10, var(--walk-a, .48)), rgba(8, 8, 10, calc(var(--walk-a, .48) + .16))),
+    repeating-linear-gradient(180deg, transparent 0 calc(9rem - 2px), rgba(0, 0, 0, .5) calc(9rem - 2px) 9rem),
+    repeating-linear-gradient(90deg, transparent 0 calc(11rem - 2px), rgba(0, 0, 0, .45) calc(11rem - 2px) 11rem),
+    url("assets/room/sidewalk.webp") center top / 26rem auto; }
+
+/* the new wood is lighter than the walnut was: less shade over it in the evening */
+:root { --table-shade: rgba(20, 9, 4, .12), rgba(20, 9, 4, 0) 30%, rgba(20, 9, 4, .18); }
+.sheet-wrap, .card { box-shadow: inset 0 -1.4rem 1.8rem -1rem rgba(0, 0, 0, .55); }
+/* phones: keep the right side of the street photo, where their red umbrella's edge hangs outside the window */
+@media (max-width: 899px) { .street-photo img { object-position: 88% 45%; } }
+
+/* ---------- the hours on their sign (2026-11-11) ----------
+   Small serif text straight on the tufted leather fought the pattern: the tufts cut through the letters, the title
+   floated away from the list, and nothing sat on anything. Their storefront sign (raw/03) is a weathered black plate
+   with a thin gold edge, gold screws and gold lettering. The hours now sit on a plate like it, hung on the booth
+   back under the bulbs, so the leather frames the words. One centred column; the plate is drawn by ::after as a
+   grid item behind the rows, which is why every row is placed by hand. */
+.hours, .visit { display: grid; grid-template-columns: minmax(0, 33rem); justify-content: center; align-content: start; column-gap: 0;
+  padding: calc(var(--lh) + 5rem + var(--bc) * .18) 2.3rem 6.6rem; text-align: center; }
+.hours::after, .visit::after { content: ''; grid-area: 1 / 1 / span 5 / 1; position: relative; z-index: 3; margin: -2.3rem -1.45rem -2.4rem;
+  border: .2rem solid #b8923f; border-image: linear-gradient(135deg, #e9cd84, #9c7630 32%, #f0d897 52%, #8a6625 78%, #d9b866) 1;
+  background:
+    radial-gradient(circle at 36% 34%, #f6e2a4, #b48d3c 52%, #5f481b 68%, rgba(0, 0, 0, 0) 72%) left .55rem top .55rem / .5rem .5rem no-repeat,
+    radial-gradient(circle at 36% 34%, #f6e2a4, #b48d3c 52%, #5f481b 68%, rgba(0, 0, 0, 0) 72%) right .55rem top .55rem / .5rem .5rem no-repeat,
+    radial-gradient(circle at 36% 34%, #f6e2a4, #b48d3c 52%, #5f481b 68%, rgba(0, 0, 0, 0) 72%) left .55rem bottom .55rem / .5rem .5rem no-repeat,
+    radial-gradient(circle at 36% 34%, #f6e2a4, #b48d3c 52%, #5f481b 68%, rgba(0, 0, 0, 0) 72%) right .55rem bottom .55rem / .5rem .5rem no-repeat,
+    radial-gradient(130% 70% at 50% -10%, rgba(255, 196, 120, .16), rgba(255, 196, 120, 0) 60%),
+    linear-gradient(175deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 30%, rgba(0, 0, 0, .22)),
+    linear-gradient(rgba(9, 8, 8, .80), rgba(9, 8, 8, .80)),
+    url("assets/room/plaster.webp") center / 24rem auto, #121110;
+  box-shadow: 0 .25rem .4rem rgba(0, 0, 0, .55), 0 1.4rem 2.2rem rgba(0, 0, 0, .6); }
+
+.hours .hours-title, .visit .visit-title { grid-area: 1 / 1; font-size: clamp(2.5rem, 1.9rem + 2.6vw, 3.6rem);
+  text-shadow: 0 1px 0 #6f5320, 0 3px 4px rgba(0, 0, 0, .65); }
+.hours .open-now, .visit .open-now { grid-area: 2 / 1; margin-top: .7rem; font-size: clamp(1.25rem, 1.1rem + .6vw, 1.5rem); text-shadow: none; }
+.open-now[data-open="yes"] { color: #f6e3b4; text-shadow: 0 0 .9rem rgba(255, 170, 80, .45); }
+.open-now[data-open="no"] { color: #cfc5b4; }
+.hours .hours-list, .visit .hours-list { grid-area: 3 / 1; margin-top: 1.5rem; border-top: 1px solid rgba(201, 160, 74, .5); }
+.hours .hours-list div, .visit .hours-list div { align-items: baseline; padding: .95rem .1rem; border-bottom-color: rgba(201, 160, 74, .5); text-shadow: none; }
+.hours .hours-list dt, .visit .hours-list dt { color: #dcbd72; text-transform: uppercase; letter-spacing: .11em; font-size: .8125rem; font-weight: 700; text-align: left; }
+.hours .hours-list dd, .visit .hours-list dd { color: #f4ecdc; font-size: 1.25rem; white-space: nowrap; }
+.hours .address, .visit .address { grid-area: 4 / 1; margin-top: 1.3rem; color: #e9dfcc; }
+.hours .actions, .visit .actions { grid-area: 5 / 1; justify-content: center; margin-top: 1.4rem; }
+.hours .btn, .visit .btn { background: rgba(255, 255, 255, .03); border-color: rgba(201, 160, 74, .75); color: #f4ecdc; }
+.hours .btn-gold, .visit .btn-gold { background: var(--gold); border-color: var(--gold); color: var(--night); }
+.hours .address, .visit .address { text-wrap: balance; }
+@media (max-width: 899px) {
+  /* phones: each day and its hours stay on one line */
+  .hours .hours-list div, .visit .hours-list div { gap: .6rem; }
+  .hours .hours-list dt, .visit .hours-list dt { font-size: .75rem; letter-spacing: .07em; white-space: nowrap; }
+  .hours .hours-list dd, .visit .hours-list dd { font-size: 1.125rem; }
+  .hours .address, .visit .address { font-size: .9375rem; }
+}
+@media (max-width: 359px) { .hours .hours-list dt, .visit .hours-list dt { white-space: normal; } }
+@media (min-width: 900px) {
+  .hours, .visit { grid-template-columns: minmax(0, 35rem); padding-top: calc(var(--lh) + 6rem + var(--bc) * .18); padding-bottom: 8rem; }
+  .hours::after, .visit::after { margin: -2.8rem -2.6rem -3rem; }
+  .hours .hours-title, .visit .visit-title { grid-row: 1; }
+  .hours .hours-list, .visit .hours-list { margin-top: 1.7rem; }
+  .hours .hours-list dt, .visit .hours-list dt { font-size: .875rem; }
+  .hours .hours-list dd, .visit .hours-list dd { font-size: 1.375rem; }
+}
+
+/* ---------- polish (2026-11-11) ----------
+   The copper rack no longer repeats every bay: rack-long.webp is three different bays (2.52 m, one hanger each,
+   not evenly spaced, glasses hung unevenly and a few out on the tables), so the image repeats only every 4.5 rack
+   heights. On phones the fiddle-leaf fig stands just past the right edge and reaches up over the corner into "On
+   Main Street", much larger; both sections give it room so no words sit under a leaf. */
+.rack { background: url("assets/room/rack-long.webp") center top / calc(var(--rk) * 4.5) 100% repeat-x; }
+@media (max-width: 899px) {
+  .street-copy { padding-bottom: 11rem; }
+  .story { padding-top: 10.5rem; }
+  .fig-story { top: -11.5rem; right: -3.4rem; height: clamp(30rem, 150vw, 37rem); }
+}
+/* day: the same front in daylight, from their daytime photo (raw\03): the awning, its lettering and the bulbs */

@@ -1,0 +1,203 @@
+/* Mambrino King demo. Night brown for the hero, brick dark and bone for the rest, gold only for the horse,
+   the rules and the name. Woodtype (Ultra) for the name and big lines, Old Standard TT for text. */
+:root {
+  --night: #17110D;
+  --brick: #2A1712;
+  --bone: #EDE3D1;
+  --bone-2: #E3D6BF;
+  --ink: #23170F;
+  --gold: #C9A04A;
+  --gold-dim: rgba(201, 160, 74, .22);
+  --text-on-dark: rgba(237, 227, 209, .86);
+  --display: 'Ultra', 'Rockwell Extra Bold', serif;
+  --text: 'Old Standard TT', Georgia, serif;
+  --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--night); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--night); color: var(--bone); font-family: var(--text); font-size: 1.0625rem; line-height: 1.55; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+h1, h2, h3 { font-weight: 400; margin: 0; }
+p { margin: 0; }
+figure, blockquote { margin: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ---------- top line ---------- */
+.top { position: absolute; z-index: 5; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center;
+  padding: .9rem var(--gutter); font-size: .875rem; color: var(--text-on-dark); }
+.top-links { display: flex; gap: 1.1rem; align-items: center; }
+.top-links a { text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+
+/* ---------- hero: the pour ---------- */
+/* --H is the height of the rendered frame (4:5); the glass rim sits at 30% of it, the bowl ends at 65%, the foot at 95% */
+.hero { position: relative; background: var(--night); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.hero-stage { --H: min(162vw, 76svh); --W: calc(var(--H) * 0.8); --cx: 50%;
+  position: relative; height: 100svh; min-height: 620px; max-height: 1400px; overflow: hidden; }
+.backplate { position: absolute; inset: 0; background: var(--night) url("assets/img/bar-blur-tall.webp") 50% 20% / cover no-repeat; }
+.backplate::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(23, 17, 13, .55) 0%, rgba(23, 17, 13, 0) 22%, rgba(23, 17, 13, 0) 62%, rgba(23, 17, 13, .92) calc(var(--H) * 0.98), #17110D 100%),
+              radial-gradient(120% 80% at 50% 40%, rgba(23, 17, 13, 0) 40%, rgba(23, 17, 13, .6) 100%); }
+.names { position: absolute; inset: 0; pointer-events: none; }
+.nm { position: absolute; left: 0; right: 0; text-align: center; font-family: var(--display); color: var(--gold); text-transform: uppercase;
+  line-height: .84; letter-spacing: .004em; white-space: nowrap; }
+.nm-1 { top: calc(var(--H) * 0.155); font-size: min(12.6vw, 9rem); }
+.nm-2 { top: calc(var(--H) * 0.705); font-size: min(22vw, 13rem); }
+.pourer { position: absolute; top: 0; left: calc(var(--cx) - var(--W) / 2); width: var(--W); height: var(--H); z-index: 2; }
+.pourer canvas { width: 100%; height: 100%; display: block; }
+.hero-copy { position: absolute; z-index: 3; left: var(--gutter); right: var(--gutter); top: calc(var(--H) + .4rem); }.lede { font-style: italic; font-size: clamp(2rem, 1.2rem + 3.4vw, 4rem); line-height: 1.04; color: var(--bone); letter-spacing: -.01em; }
+.sub { font-size: clamp(1.0625rem, 1rem + .3vw, 1.25rem); color: var(--text-on-dark); margin-top: 1rem; max-width: 26ch; }
+
+cite { display: block; font-style: normal; font-size: .8125rem; margin-top: .6rem; opacity: .7; }
+/* reviewer credit links: each opens that review on Google (no hover state) */
+.rv { text-underline-offset: .2em; text-decoration-thickness: 1px; white-space: nowrap; }
+
+/* ---------- the card: the menu as a race programme ---------- */
+.card { background: var(--bone); color: var(--ink); padding: 3.5rem var(--gutter) 4rem; }
+.card-sheet { max-width: 72rem; margin: 0 auto; border-top: 3px solid var(--ink); border-bottom: 3px solid var(--ink); padding: 1.4rem 0 2rem; position: relative; }
+.card-sheet::before, .card-sheet::after { content: ''; position: absolute; left: 0; right: 0; height: 1px; background: var(--ink); }
+.card-sheet::before { top: 5px; } .card-sheet::after { bottom: 5px; }
+.card-head { text-align: center; padding: 1.2rem 0 1.6rem; border-bottom: 1px solid rgba(35, 23, 15, .35); }
+.card-kicker { font-size: .875rem; font-style: italic; }
+.card-title { font-family: var(--display); text-transform: uppercase; font-size: clamp(3.4rem, 2rem + 7vw, 7.5rem); line-height: .9; margin: .35rem 0 .7rem; }
+.card-note { font-size: .9375rem; max-width: 34ch; margin: 0 auto; }
+.races { display: grid; grid-template-columns: 1fr; }
+.race { padding: 1.6rem 0 1.4rem; border-bottom: 1px solid rgba(35, 23, 15, .35); }
+.race-no { font-size: .8125rem; font-style: italic; }
+.race-name { font-family: var(--display); text-transform: uppercase; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.2rem); line-height: 1; margin: .2rem 0 .9rem; }
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li { display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; align-items: baseline; padding: .42rem 0; border-top: 1px dotted rgba(35, 23, 15, .3); }
+.post { font-family: var(--display); font-size: .95rem; background: var(--ink); color: var(--bone); width: 1.75rem; height: 1.75rem; display: grid; place-items: center; line-height: 1; transform: translateY(.3rem); }
+.entry { font-size: 1.1875rem; font-weight: 700; }
+.entry em { display: block; font-weight: 400; font-size: .9375rem; margin-top: .1rem; }
+.finish { margin: 2.2rem auto 0; max-width: 36rem; }
+.snap { background: #fbf6ec; padding: .55rem .55rem .7rem; box-shadow: 0 1px 0 rgba(35, 23, 15, .25); }
+.snap img { aspect-ratio: 3 / 2; object-fit: cover; width: 100%; }
+.snap figcaption { font-size: .875rem; font-style: italic; margin-top: .45rem; }
+.snap { transform: rotate(-1.2deg); }
+
+/* ---------- made here, in small batches ---------- */
+.made { background: var(--brick); padding: 4.5rem var(--gutter) 4.5rem; }
+.made-head { max-width: 72rem; margin: 0 auto 2.4rem; }
+.made-title, .staff-title, .street-title, .story-title, .hours-title { font-family: var(--display); color: var(--gold); line-height: .95; letter-spacing: -.005em; }
+.made-title { font-size: clamp(2.6rem, 1.6rem + 4.6vw, 5.6rem); max-width: 12ch; }
+.made-quote { margin-top: 1.6rem; max-width: 36rem; }
+.made-quote p { font-style: italic; font-size: clamp(1.35rem, 1.1rem + 1.1vw, 2rem); line-height: 1.2; color: var(--bone); }
+.made-quote p + p { margin-top: .9rem; }
+.made-photos { max-width: 72rem; margin: 0 auto; display: grid; gap: 1.2rem; }
+.mp img { width: 100%; object-fit: cover; }
+.mp-bread img { aspect-ratio: 4 / 3; object-position: 40% 50%; }
+.mp-side { display: grid; gap: 1.2rem; grid-template-columns: 1fr 1fr; align-items: start; }
+.made-menu { grid-column: 1 / -1; font-style: italic; font-size: 1.125rem; line-height: 1.4; color: var(--bone);
+  border-top: 1px solid var(--gold-dim); border-bottom: 1px solid var(--gold-dim); padding: 1rem 0; }
+.made-menu span { display: block; font-style: normal; font-size: .8125rem; opacity: .7; margin-top: .45rem; }
+.mp-board img { aspect-ratio: 1; }
+.clip { background: #fbf6ec; padding: .45rem .45rem .55rem; transform: rotate(1.4deg); }
+.clip video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 416; object-fit: cover; background: #111; }
+.clip figcaption { font-size: .8125rem; font-style: italic; color: var(--ink); margin-top: .35rem; }
+
+/* ---------- our staff ---------- */
+.staff { background: var(--night); padding: 4.5rem var(--gutter) 4.5rem; display: grid; gap: 1.6rem; }
+.staff-main { max-width: 80rem; width: 100%; margin: 0 auto; }
+.staff-main img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.staff-copy { max-width: 72rem; width: 100%; margin: 0 auto; }
+.staff-title { font-size: clamp(2.6rem, 1.6rem + 4.6vw, 5.6rem); }
+.staff-line { font-style: italic; font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.4rem); line-height: 1.15; color: var(--bone); margin-top: 1rem; max-width: 30ch; }
+.staff-src { font-size: .8125rem; opacity: .7; margin-top: .6rem; }
+.staff-row { max-width: 80rem; width: 100%; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+.staff-row figure:first-child { grid-column: 1 / -1; }
+.staff-row img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* ---------- the name ---------- */
+.story { background: var(--night); padding: 4.5rem var(--gutter) 3rem; display: grid; gap: 1.4rem; border-top: 1px solid var(--gold-dim); }
+.story .emblem { width: min(26rem, 88%); height: auto; }
+.story-title { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem); }
+.story-copy { max-width: 34rem; }
+.story-copy p { margin-top: 1rem; color: var(--text-on-dark); font-size: 1.125rem; }
+.story-copy .credit { font-size: .875rem; font-style: italic; opacity: .75; border-top: 1px solid var(--gold-dim); padding-top: .9rem; margin-top: 1.4rem; }
+
+/* ---------- on Main Street ---------- */
+.street { background: var(--brick); }
+.street-photo { height: 70svh; max-height: 820px; overflow: hidden; }
+.street-photo img { width: 100%; height: 112%; object-fit: cover; object-position: 50% 45%; }
+.street-copy { padding: 3rem var(--gutter) 4rem; max-width: 72rem; margin: 0 auto; }
+.street-title { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem); }
+.street-copy > p { margin-top: 1rem; max-width: 30rem; font-size: 1.125rem; color: var(--text-on-dark); }
+.room-quote { margin-top: 1.6rem; max-width: 26rem; }
+.room-quote p { font-style: italic; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.1rem); line-height: 1.18; color: var(--bone); }
+/* ---------- hours ---------- */
+.hours { background: var(--night); padding: 4.5rem var(--gutter) 4rem; max-width: 72rem; margin: 0 auto; }
+.hours-list { margin: 1.8rem 0 0; border-top: 1px solid var(--gold-dim); }
+.hours-list div { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--gold-dim); font-size: 1.1875rem; }
+.hours-list dt { color: var(--text-on-dark); }
+.hours-list dd { margin: 0; color: var(--bone); font-weight: 700; text-align: right; }
+.address { margin-top: 1.4rem; color: var(--text-on-dark); }
+.actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.8rem; }
+.btn { display: inline-block; text-decoration: none; padding: .85rem 1.2rem; border: 1px solid rgba(201, 160, 74, .55); color: var(--bone); font-size: 1rem; }
+.btn-gold { background: var(--gold); color: var(--night); border-color: var(--gold); font-weight: 700; }
+
+/* ---------- reviews ribbon ---------- */
+.voices { background: var(--night); padding: 2rem 0 4rem; overflow: hidden; border-top: 1px solid var(--gold-dim); }
+.ribbon { display: flex; gap: 3rem; width: max-content; padding-left: var(--gutter); will-change: transform; }
+.ribbon blockquote { width: min(78vw, 24rem); flex: none; }
+.ribbon p { font-style: italic; font-size: clamp(1.3rem, 1.1rem + .9vw, 1.8rem); line-height: 1.2; color: var(--bone); }
+@media (max-width: 899px) {
+  /* phones: swipe through the reviews (no scroll-linked motion) */
+  .ribbon { width: auto; gap: 1.4rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scroll-padding-left: var(--gutter); padding-right: var(--gutter); padding-bottom: .6rem; scrollbar-width: none; will-change: auto; }
+  .ribbon::-webkit-scrollbar { display: none; }
+  .ribbon blockquote { width: 80vw; scroll-snap-align: start; }
+}
+
+/* ---------- footer ---------- */
+.foot { background: var(--night); padding: 2.5rem var(--gutter) 3rem; border-top: 1px solid var(--gold-dim); font-size: .9375rem; color: var(--text-on-dark); }
+.foot-name { font-family: var(--display); text-transform: uppercase; color: var(--gold); font-size: 1.6rem; margin-bottom: .6rem; }
+.foot-small { font-size: .8125rem; opacity: .7; margin-top: .4rem; }
+
+/* ---------- wider screens ---------- */
+@media (min-width: 900px) {
+  /* wide: the frame fills the height; the name runs in one line behind the stem, which stands in the gap
+     between MAMBRINO and KING; the words sit to the left */
+  .hero-stage { --H: min(100svh, 1400px); --fs: min(8.2vw, 10.5rem); --cx: calc(var(--gutter) + var(--fs) * 7.3); }
+  .backplate { background-image: url("assets/img/bar-blur-wide.webp"); background-position: 50% 30%; }
+  .backplate::after { background: linear-gradient(to bottom, rgba(23, 17, 13, .5) 0%, rgba(23, 17, 13, 0) 20%, rgba(23, 17, 13, 0) 70%, rgba(23, 17, 13, .85) 100%),
+              linear-gradient(to right, rgba(23, 17, 13, .78) 0%, rgba(23, 17, 13, .2) 38%, rgba(23, 17, 13, 0) 60%); }
+  .names { display: flex; gap: .28em; position: absolute; inset: auto var(--gutter) auto var(--gutter); top: calc(var(--H) * 0.70); font-size: var(--fs); }
+  .nm { position: static; font-size: 1em !important; text-align: left; }
+  .hero-copy { top: calc(var(--H) * 0.25); right: auto; max-width: min(26rem, 30vw); }  .races { grid-template-columns: 1fr 1fr; column-gap: 3rem; }
+  .finish { max-width: 40rem; margin: 2.5rem auto 0; }
+  .made { padding: 6rem var(--gutter); }
+  .made-head { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: end; }
+  .made-quote { margin-top: 0; }
+  .made-photos { grid-template-columns: 1.5fr 1fr; align-items: start; gap: 1.6rem; }
+  .mp-side { grid-template-columns: 1fr; }
+  .mp-board img { aspect-ratio: 3 / 2; }
+  .clip { width: 78%; justify-self: end; margin-top: -2.4rem; }
+  .staff { padding: 6rem var(--gutter); grid-template-columns: 1.6fr 1fr; column-gap: 3rem; align-items: end; }
+  .staff-main { grid-column: 1; grid-row: 1; }
+  .staff-copy { grid-column: 2; grid-row: 1; padding-bottom: 1rem; }
+  .staff-row { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  .staff-row figure:first-child { grid-column: auto; }
+  .story { grid-template-columns: 1fr 1fr; align-items: center; max-width: 80rem; margin: 0 auto; padding: 6rem var(--gutter); }
+  .story .emblem { width: min(34rem, 100%); }  .street { display: grid; grid-template-columns: 1.3fr 1fr; }
+  .street-photo { height: auto; min-height: 620px; max-height: none; }
+  .street-copy { padding: 5rem var(--gutter); }
+  .hours { display: grid; grid-template-columns: 1fr 1fr; column-gap: 4rem; padding: 6rem var(--gutter); }
+  .hours-title { grid-row: span 3; }
+  .hours-title { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem); }
+  .hours-list { margin-top: 0; }
+}
+
+/* short windows (landscape phones, big zoom): the hero grows to fit and is not pinned */
+@media (max-height: 599px) {
+  .hero-stage { --H: min(162vw, 120vh); height: calc(var(--H) + 14rem); max-height: none; min-height: 0; }
+}
+
+/* still capture for the link-preview image */
+html.still .top { display: none; }
+@media (min-width: 900px) and (max-height: 700px) { .hero-stage { min-height: 0; padding-top: 3.6rem; } }
+
+/* motion off: no pinning, everything in place */
+html[data-motion="off"] .ribbon { transform: none !important; }
+

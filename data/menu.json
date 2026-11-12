@@ -1,0 +1,664 @@
+{
+  "version": 1,
+  "site": {
+    "name": "Mambrino King",
+    "url": "",
+    "noindex": true,
+    "place": "East Aurora, New York",
+    "tagline": "Main Street's Living Room.",
+    "cuisine": [
+      "Wine bar",
+      "Coffee",
+      "Chocolate",
+      "Cafe"
+    ],
+    "address": {
+      "street": "Main Street",
+      "locality": "East Aurora",
+      "region": "NY",
+      "postalCode": "14052",
+      "country": "US"
+    },
+    "phone": "",
+    "links": {
+      "facebook": "https://www.facebook.com/MambrinoKingWineCoffeeBar",
+      "instagram": "https://www.instagram.com/mambrinoking/",
+      "directions": "https://www.google.com/maps/search/?api=1&query=Mambrino+King+East+Aurora+NY"
+    },
+    "fontsHref": "https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Ultra&display=swap",
+    "styles": [
+      "styles.css?v=6",
+      "menu.css?v=3",
+      "room.css?v=19"
+    ],
+    "themeColor": "#17110D",
+    "editor": {
+      "display": "Ultra",
+      "text": "Old Standard TT",
+      "accent": "#C9A04A",
+      "paper": "#EDE3D1",
+      "ink": "#23170F",
+      "night": "#17110D"
+    },
+    "footer": [
+      "Demo built for Mambrino King. Not an official site."
+    ],
+    "footerSmall": "Menu and prices from Mambrino King's printed lunch menu (seen in their spring 2026 video). Drinks are priced at the bar. Wood, plaster and leather textures from Poly Haven (CC0).",
+    "scripts": [
+      "assets/room.js?v=2"
+    ],
+    "decor": {
+      "strand": true,
+      "table": [
+        {
+          "cls": "cup",
+          "src": "assets/room/cup.webp",
+          "w": 820,
+          "h": 820
+        },
+        {
+          "cls": "waffle decor-plate",
+          "src": "assets/room/plate-waffle.webp",
+          "w": 768,
+          "h": 737
+        },
+        {
+          "cls": "focaccia decor-plate",
+          "src": "assets/room/plate-focaccia.webp",
+          "w": 708,
+          "h": 736
+        },
+        {
+          "cls": "tostada decor-plate",
+          "src": "assets/room/plate-tostada.webp",
+          "w": 750,
+          "h": 744
+        },
+        {
+          "cls": "bottle",
+          "src": "assets/room/bottle.webp",
+          "w": 1000,
+          "h": 1000
+        },
+        {
+          "cls": "bonbons",
+          "src": "assets/room/bonbons.webp",
+          "w": 860,
+          "h": 614
+        }
+      ]
+    }
+  },
+  "menu": {
+    "title": "The card",
+    "intro": "A casual environment that lends itself to conversation while providing exceptional food and drinks. All items are created in small batches, whenever possible, with no added preservatives.",
+    "homeNote": "A few favourites from the kitchen and the bar. The full card has every dish and price.",
+    "notes": [
+      "All food and drink are available to go. Call ahead or drop in and order.",
+      "Many of our plates have gluten free options at a slightly higher cost."
+    ]
+  },
+  "hours": {
+    "mon": null,
+    "tue": [
+      "11:00",
+      "21:00"
+    ],
+    "wed": [
+      "11:00",
+      "21:00"
+    ],
+    "thu": [
+      "11:00",
+      "21:00"
+    ],
+    "fri": [
+      "11:00",
+      "23:00"
+    ],
+    "sat": [
+      "11:00",
+      "23:00"
+    ],
+    "sun": null
+  },
+  "sections": [
+    {
+      "id": "soups",
+      "name": "Soups",
+      "note": "Made in house.",
+      "photo": "",
+      "items": [
+        {
+          "id": "french-onion-soup",
+          "slug": "french-onion-soup",
+          "name": "French Onion Soup",
+          "desc": "Made in house.",
+          "price": "",
+          "options": [
+            {
+              "name": "Cup",
+              "note": "",
+              "price": "6"
+            },
+            {
+              "name": "Bowl",
+              "note": "",
+              "price": "9"
+            }
+          ],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "soup-of-the-day",
+          "slug": "soup-of-the-day",
+          "name": "Soup of the Day",
+          "desc": "Made in house.",
+          "price": "",
+          "options": [
+            {
+              "name": "Cup",
+              "note": "",
+              "price": "6"
+            },
+            {
+              "name": "Bowl",
+              "note": "",
+              "price": "9"
+            }
+          ],
+          "photo": "assets/menu/soup-of-the-day.webp",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "photoAlt": "A cup of chicken and cilantro soup with crackers and a wedge of lime, one of the soups of the day"
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "name": "Sandwiches",
+      "note": "Bread by Mel's Diner, no preservatives.",
+      "photo": "",
+      "items": [
+        {
+          "id": "mambrino-breakfast-sandwich",
+          "slug": "mambrino-breakfast-sandwich",
+          "name": "Mambrino Breakfast Sandwich",
+          "desc": "Thick bacon, spring greens, fried egg and sriracha mayo on a croissant. Served with fresh fruit.",
+          "price": "15",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "blt",
+          "slug": "blt",
+          "name": "BLT",
+          "desc": "Thick bacon, spring greens, tomato and mayonnaise on potato bread or a croissant. Served with a side salad or chips.",
+          "price": "16.25",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "four-cheese-grilled-cheese",
+          "slug": "four-cheese-grilled-cheese",
+          "name": "Four Cheese Grilled Cheese",
+          "desc": "Brie, provolone, mozzarella and cheddar. Served with a side salad or chips, honey and apples.",
+          "price": "14",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "pot-roast-sandwich",
+          "slug": "pot-roast-sandwich",
+          "name": "Pot Roast Sandwich",
+          "desc": "Tender pot roast on freshly baked baguette, topped with melted provolone and horseradish aioli. Served with a side salad or chips.",
+          "price": "18.75",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "soup-and-sandwich-combo",
+          "slug": "soup-and-sandwich-combo",
+          "name": "Soup and Sandwich Combo",
+          "desc": "Half a grilled cheese or half a BLT with a cup of soup: French onion or the soup of the day.",
+          "price": "14",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "flatbreads",
+      "name": "Flatbreads",
+      "note": "Flatbreads by Mel's, no preservatives. Every flatbread is 18.25.",
+      "photo": "",
+      "items": [
+        {
+          "id": "mediterranean-flatbread",
+          "slug": "mediterranean-flatbread",
+          "name": "Mediterranean",
+          "desc": "Basil pesto base topped with black olives, mozzarella and artichoke hearts.",
+          "price": "18.25",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "brie-apple-bacon-flatbread",
+          "slug": "brie-apple-bacon-flatbread",
+          "name": "Brie Apple Bacon",
+          "desc": "Bacon, brie, mozzarella, spring mix, diced green apples, pickled onions and a balsamic reduction drizzle.",
+          "price": "18.25",
+          "options": [],
+          "photo": "assets/menu/flatbread.webp",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "photoAlt": "A flatbread topped with spring mix, diced green apple, pickled onions and bacon"
+        },
+        {
+          "id": "fig-and-buttermilk-bleu-flatbread",
+          "slug": "fig-and-buttermilk-bleu-flatbread",
+          "name": "Fig and Buttermilk Bleu",
+          "desc": "Fig jam base topped with bleu cheese, mozzarella, spring mix and a balsamic reduction drizzle.",
+          "price": "18.25",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "flatbread-of-the-week",
+          "slug": "flatbread-of-the-week",
+          "name": "Flatbread of the Week",
+          "desc": "Ask your server.",
+          "price": "18.25",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "featured-foods",
+      "name": "Featured foods",
+      "note": "",
+      "photo": "",
+      "items": [
+        {
+          "id": "loaded-hummus",
+          "slug": "loaded-hummus",
+          "name": "Loaded Hummus",
+          "desc": "Fresh hummus topped with pickled onions, peppers, artichokes, olives, cucumbers and feta. Served with toasted pita.",
+          "price": "17",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "feta-cherry-salad",
+          "slug": "feta-cherry-salad",
+          "name": "Feta Cherry Salad",
+          "desc": "Pickled onions, dried cherries, feta and pistachios with a balsamic dressing on a bed of spring greens. Paired with nut and berry crackers.",
+          "price": "14",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "warm-brie-and-baguette",
+          "slug": "warm-brie-and-baguette",
+          "name": "Warm Brie and Baguette",
+          "desc": "Served with sliced apples and fig jam.",
+          "price": "18",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "ahi-tuna-salad",
+          "slug": "ahi-tuna-salad",
+          "name": "Ahi Tuna Salad",
+          "desc": "Wild caught tuna, mixed greens, cabbage and carrots with an Asian sesame dressing.",
+          "price": "21",
+          "options": [],
+          "photo": "assets/menu/ahi-tuna-salad.webp",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": true,
+          "quote": null,
+          "photoAlt": "Seared sesame-crusted ahi tuna on mixed greens and cabbage"
+        },
+        {
+          "id": "caesar-salad",
+          "slug": "caesar-salad",
+          "name": "Caesar Salad",
+          "desc": "Romaine, croutons, Parmesan and house made dressing.",
+          "price": "13",
+          "options": [
+            {
+              "name": "Add chicken",
+              "note": "",
+              "price": "+5"
+            }
+          ],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "house-salad",
+          "slug": "house-salad",
+          "name": "House Salad",
+          "desc": "Spring greens, grape tomatoes, cucumber, sweet peppers, craisins, red onion, bacon, seed crackers and sliced almonds with balsamic dressing.",
+          "price": "12",
+          "options": [],
+          "photo": "assets/menu/house-salad.webp",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "photoAlt": "The house salad with bacon, sliced almonds, red onion, tomatoes and seed crackers, with balsamic dressing on the side"
+        },
+        {
+          "id": "soup-and-salad",
+          "slug": "soup-and-salad",
+          "name": "Soup and Salad",
+          "desc": "Half a house salad and a cup of soup.",
+          "price": "14",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "cheese-plate",
+          "slug": "cheese-plate",
+          "name": "Cheese Plate",
+          "desc": "Three cheeses with assorted crackers and bread.",
+          "price": "19.75",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "charcuterie",
+      "name": "Charcuterie",
+      "note": "Sized by the horse.",
+      "photo": "",
+      "items": [
+        {
+          "id": "charcuterie-board",
+          "slug": "charcuterie-board",
+          "name": "Charcuterie Board",
+          "desc": "An assortment of meats, cheeses, artisan bread, olives, fruit and nuts, artfully arranged.",
+          "price": "",
+          "options": [
+            {
+              "name": "Miniature",
+              "note": "serves 1",
+              "price": "15"
+            },
+            {
+              "name": "Pony",
+              "note": "serves 1 to 2",
+              "price": "29"
+            },
+            {
+              "name": "Quarter Horse",
+              "note": "serves 3 to 4",
+              "price": "75"
+            },
+            {
+              "name": "Arabian",
+              "note": "serves 5 to 6",
+              "price": "125"
+            }
+          ],
+          "photo": "assets/img/board.webp",
+          "photoAlt": "A charcuterie board with grapes, blueberries, cheese, cured meat, pistachios and strawberries",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "name": "Coffee",
+      "note": "Priced at the bar.",
+      "photo": "",
+      "items": [
+        {
+          "id": "cappuccino",
+          "slug": "cappuccino",
+          "name": "Cappuccino",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "assets/img/cappuccino.webp",
+          "photoAlt": "A cappuccino dusted with cinnamon, with a wafer on a wooden board",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "chai-latte",
+          "slug": "chai-latte",
+          "name": "Chai Latte",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": {
+            "text": "The best chai latté I've ever had.",
+            "by": "Vera Edelman",
+            "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xWamRVUkhSVTlHVm01NGNVWTNaVlZNV2xaNVZGRRAB!2m1!1s0x0:0x438c166fd89ed768!3m1!1s2@1:CAIQACodChtycF9oOlVjdURHRU9GVm54cUY3ZVVMWlZ5VFE%7C%7C?hl=en"
+          }
+        },
+        {
+          "id": "vietnamese-coffee",
+          "slug": "vietnamese-coffee",
+          "name": "Vietnamese Coffee",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "the-bar",
+      "name": "The bar",
+      "note": "Priced at the bar.",
+      "photo": "",
+      "items": [
+        {
+          "id": "espresso-martini",
+          "slug": "espresso-martini",
+          "name": "Espresso Martini",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "assets/menu/espresso-martini.webp",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "photoAlt": "Martinis on a table seen from above, an espresso martini topped with coffee beans among them"
+        },
+        {
+          "id": "chocolate-martini",
+          "slug": "chocolate-martini",
+          "name": "Chocolate Martini",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "assets/img/martini.webp",
+          "photoAlt": "A chocolate martini laced with chocolate syrup, next to a coffee",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "mimosas",
+          "slug": "mimosas",
+          "name": "Mimosas",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        },
+        {
+          "id": "the-wine-list",
+          "slug": "the-wine-list",
+          "name": "The Wine List",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "assets/img/wine.webp",
+          "photoAlt": "A line-up of wine bottles on the bar, from a rosé to an Amarone",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    },
+    {
+      "id": "chocolate",
+      "name": "Chocolate",
+      "note": "Priced at the bar.",
+      "photo": "",
+      "items": [
+        {
+          "id": "signature-chocolate-caramel-cake",
+          "slug": "signature-chocolate-caramel-cake",
+          "name": "Signature Chocolate Caramel Cake",
+          "desc": "",
+          "price": "",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": {
+            "text": "We both shared a slice of the Signature Chocolate Caramel Cake.",
+            "by": "Travis Bohrer",
+            "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2pOeWNtTnpTMmxrYm5kNFpuVnZiMFJ6YUV4aE5FRRAB!2m1!1s0x0:0x438c166fd89ed768!3m1!1s2@1:CAIQACodChtycF9oOjNycmNzS2lkbnd4ZnVvb0RzaExhNEE%7C%7C?hl=en"
+          }
+        },
+        {
+          "id": "chocolates-from-the-case",
+          "slug": "chocolates-from-the-case",
+          "name": "Chocolates from the Case",
+          "desc": "Truffles and squares from the chocolate case.",
+          "price": "",
+          "options": [],
+          "photo": "assets/menu/chocolates-case.webp",
+          "photoAlt": "Trays of truffles and chocolate squares in the chocolate case",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null
+        }
+      ]
+    }
+  ]
+}
