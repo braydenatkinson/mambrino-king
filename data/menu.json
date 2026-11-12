@@ -25,11 +25,12 @@
       "instagram": "https://www.instagram.com/mambrinoking/",
       "directions": "https://www.google.com/maps/search/?api=1&query=Mambrino+King+East+Aurora+NY"
     },
-    "fontsHref": "https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&family=Ultra&display=swap",
+    "fontsHref": "https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;1,300;1,400&family=Saira:wght@200;300;400&display=swap",
     "styles": [
       "styles.css?v=6",
       "menu.css?v=3",
-      "room.css?v=19"
+      "room.css?v=19",
+      "type.css?v=1"
     ],
     "themeColor": "#17110D",
     "editor": {
@@ -43,7 +44,7 @@
     "footer": [
       "Demo built for Mambrino King. Not an official site."
     ],
-    "footerSmall": "Menu and prices from Mambrino King's printed lunch menu (seen in their spring 2026 video). Drinks are priced at the bar. Wood, plaster and leather textures from Poly Haven (CC0).",
+    "footerSmall": "Menu and prices from Mambrino King's current lunch menu. Drinks are priced at the bar. Wood, plaster and leather textures from Poly Haven (CC0).",
     "scripts": [
       "assets/room.js?v=2"
     ],
@@ -91,11 +92,11 @@
   },
   "menu": {
     "title": "The card",
-    "intro": "A casual environment that lends itself to conversation while providing exceptional food and drinks. All items are created in small batches, whenever possible, with no added preservatives.",
+    "intro": "A casual environment that lends itself to conversation while providing exceptional food and drinks. Our foods are made single batch with no preservatives or dyes whenever possible.",
     "homeNote": "A few favourites from the kitchen and the bar. The full card has every dish and price.",
     "notes": [
-      "All food and drink are available to go. Call ahead or drop in and order.",
-      "Many of our plates have gluten free options at a slightly higher cost."
+      "Let your server know if you have any allergies prior to ordering.",
+      "And as always, thank you for being here."
     ]
   },
   "hours": {
@@ -126,14 +127,38 @@
     {
       "id": "soups",
       "name": "Soups",
-      "note": "Made in house.",
+      "note": "Served with warm garlic butter breadsticks.",
       "photo": "",
       "items": [
+        {
+          "id": "roasted-tomato-soup",
+          "slug": "roasted-tomato-soup",
+          "name": "Roasted Tomato Soup",
+          "price": "",
+          "options": [
+            {
+              "name": "Cup",
+              "note": "",
+              "price": "6"
+            },
+            {
+              "name": "Bowl",
+              "note": "",
+              "price": "9"
+            }
+          ],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Served with warm garlic butter breadsticks."
+        },
         {
           "id": "french-onion-soup",
           "slug": "french-onion-soup",
           "name": "French Onion Soup",
-          "desc": "Made in house.",
           "price": "",
           "options": [
             {
@@ -152,13 +177,13 @@
           "soldOut": false,
           "hidden": false,
           "advisory": false,
-          "quote": null
+          "quote": null,
+          "desc": "Served with warm garlic butter breadsticks."
         },
         {
           "id": "soup-of-the-day",
           "slug": "soup-of-the-day",
           "name": "Soup of the Day",
-          "desc": "Made in house.",
           "price": "",
           "options": [
             {
@@ -173,169 +198,77 @@
             }
           ],
           "photo": "assets/menu/soup-of-the-day.webp",
+          "photoAlt": "A cup of chicken and cilantro soup with crackers and a wedge of lime, one of the soups of the day",
           "home": false,
           "soldOut": false,
           "hidden": false,
           "advisory": false,
           "quote": null,
-          "photoAlt": "A cup of chicken and cilantro soup with crackers and a wedge of lime, one of the soups of the day"
+          "desc": "Served with warm garlic butter breadsticks."
         }
       ]
     },
     {
-      "id": "sandwiches",
-      "name": "Sandwiches",
-      "note": "Bread by Mel's Diner, no preservatives.",
+      "id": "combos",
+      "name": "Combos",
+      "note": "Choose two.",
       "photo": "",
       "items": [
         {
-          "id": "mambrino-breakfast-sandwich",
-          "slug": "mambrino-breakfast-sandwich",
-          "name": "Mambrino Breakfast Sandwich",
-          "desc": "Thick bacon, spring greens, fried egg and sriracha mayo on a croissant. Served with fresh fruit.",
-          "price": "15",
+          "id": "choose-two",
+          "slug": "choose-two",
+          "name": "Choose Two",
+          "price": "",
           "options": [],
           "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "blt",
-          "slug": "blt",
-          "name": "BLT",
-          "desc": "Thick bacon, spring greens, tomato and mayonnaise on potato bread or a croissant. Served with a side salad or chips.",
-          "price": "16.25",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "four-cheese-grilled-cheese",
-          "slug": "four-cheese-grilled-cheese",
-          "name": "Four Cheese Grilled Cheese",
-          "desc": "Brie, provolone, mozzarella and cheddar. Served with a side salad or chips, honey and apples.",
-          "price": "14",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "pot-roast-sandwich",
-          "slug": "pot-roast-sandwich",
-          "name": "Pot Roast Sandwich",
-          "desc": "Tender pot roast on freshly baked baguette, topped with melted provolone and horseradish aioli. Served with a side salad or chips.",
-          "price": "18.75",
-          "options": [],
-          "photo": "",
-          "home": true,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "soup-and-sandwich-combo",
-          "slug": "soup-and-sandwich-combo",
-          "name": "Soup and Sandwich Combo",
-          "desc": "Half a grilled cheese or half a BLT with a cup of soup: French onion or the soup of the day.",
-          "price": "14",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        }
-      ]
-    },
-    {
-      "id": "flatbreads",
-      "name": "Flatbreads",
-      "note": "Flatbreads by Mel's, no preservatives. Every flatbread is 18.25.",
-      "photo": "",
-      "items": [
-        {
-          "id": "mediterranean-flatbread",
-          "slug": "mediterranean-flatbread",
-          "name": "Mediterranean",
-          "desc": "Basil pesto base topped with black olives, mozzarella and artichoke hearts.",
-          "price": "18.25",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "brie-apple-bacon-flatbread",
-          "slug": "brie-apple-bacon-flatbread",
-          "name": "Brie Apple Bacon",
-          "desc": "Bacon, brie, mozzarella, spring mix, diced green apples, pickled onions and a balsamic reduction drizzle.",
-          "price": "18.25",
-          "options": [],
-          "photo": "assets/menu/flatbread.webp",
           "home": false,
           "soldOut": false,
           "hidden": false,
           "advisory": false,
           "quote": null,
-          "photoAlt": "A flatbread topped with spring mix, diced green apple, pickled onions and bacon"
-        },
-        {
-          "id": "fig-and-buttermilk-bleu-flatbread",
-          "slug": "fig-and-buttermilk-bleu-flatbread",
-          "name": "Fig and Buttermilk Bleu",
-          "desc": "Fig jam base topped with bleu cheese, mozzarella, spring mix and a balsamic reduction drizzle.",
-          "price": "18.25",
-          "options": [],
-          "photo": "",
-          "home": true,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "flatbread-of-the-week",
-          "slug": "flatbread-of-the-week",
-          "name": "Flatbread of the Week",
-          "desc": "Ask your server.",
-          "price": "18.25",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
+          "desc": "Any two of soup, salad or half a sandwich. Sandwich choices: BLT, grilled cheese or fig and pig."
         }
       ]
     },
     {
-      "id": "featured-foods",
-      "name": "Featured foods",
+      "id": "this-and-that",
+      "name": "This and That",
       "note": "",
       "photo": "",
       "items": [
         {
-          "id": "loaded-hummus",
-          "slug": "loaded-hummus",
-          "name": "Loaded Hummus",
-          "desc": "Fresh hummus topped with pickled onions, peppers, artichokes, olives, cucumbers and feta. Served with toasted pita.",
+          "id": "olive-oil-and-focaccia",
+          "slug": "olive-oil-and-focaccia",
+          "name": "Olive Oil and Focaccia",
+          "price": "9",
+          "options": [],
+          "photo": "assets/menu/focaccia.webp",
+          "photoAlt": "Squares of focaccia with rosemary beside a glass dish of olive oil",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "First pressed olive oil and fresh made focaccia."
+        },
+        {
+          "id": "feta-cherry-salad",
+          "slug": "feta-cherry-salad",
+          "name": "Feta Cherry Salad",
+          "price": "14",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Spring mix, dried cherries, pistachios and feta. Balsamic dressing with nut and berry crackers."
+        },
+        {
+          "id": "hummus",
+          "slug": "hummus",
+          "name": "Hummus",
           "price": "17",
           "options": [],
           "photo": "",
@@ -343,13 +276,92 @@
           "soldOut": false,
           "hidden": false,
           "advisory": false,
-          "quote": null
+          "quote": null,
+          "desc": "Fresh made, topped with pickled onions, grape tomatoes, cucumber, watermelon radish, artichokes and feta. Served with warm pita bread."
         },
         {
-          "id": "feta-cherry-salad",
-          "slug": "feta-cherry-salad",
-          "name": "Feta Cherry Salad",
-          "desc": "Pickled onions, dried cherries, feta and pistachios with a balsamic dressing on a bed of spring greens. Paired with nut and berry crackers.",
+          "id": "ahi-tuna-salad",
+          "slug": "ahi-tuna-salad",
+          "name": "Ahi Tuna Salad",
+          "price": "21",
+          "options": [],
+          "photo": "assets/menu/ahi-tuna-salad.webp",
+          "photoAlt": "Seared sesame-crusted ahi tuna on mixed greens and cabbage",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": true,
+          "quote": null,
+          "desc": "Freshly seared ahi tuna, wild caught, on a bed of greens, carrots and cabbage with our Asian tuna dressing."
+        },
+        {
+          "id": "brie-and-baguette",
+          "slug": "brie-and-baguette",
+          "name": "Brie and Baguette",
+          "price": "",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Accompanied with fig jam, apple slices and berry and nut crackers."
+        }
+      ]
+    },
+    {
+      "id": "sandwiches",
+      "name": "Sandwiches",
+      "note": "Choice of chips or salad side.",
+      "photo": "",
+      "items": [
+        {
+          "id": "blt",
+          "slug": "blt",
+          "name": "BLT",
+          "price": "15",
+          "options": [],
+          "photo": "",
+          "home": false,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Thick bacon, spring greens and tomato on fresh baked potato bread or baguette."
+        },
+        {
+          "id": "fig-and-pig",
+          "slug": "fig-and-pig",
+          "name": "Fig and Pig",
+          "price": "16",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Thick bacon and melted provolone on fig jam, topped with sliced almonds."
+        },
+        {
+          "id": "pot-roast-sandwich",
+          "slug": "pot-roast-sandwich",
+          "name": "Pot Roast Sandwich",
+          "price": "18.75",
+          "options": [],
+          "photo": "",
+          "home": true,
+          "soldOut": false,
+          "hidden": false,
+          "advisory": false,
+          "quote": null,
+          "desc": "Tender pot roast on baguette with melted provolone and horseradish aioli."
+        },
+        {
+          "id": "grilled-cheese",
+          "slug": "grilled-cheese",
+          "name": "Grilled Cheese",
           "price": "14",
           "options": [],
           "photo": "",
@@ -357,48 +369,46 @@
           "soldOut": false,
           "hidden": false,
           "advisory": false,
-          "quote": null
+          "quote": null,
+          "desc": "Three cheeses, provolone, brie and cheddar, on potato bread."
         },
         {
-          "id": "warm-brie-and-baguette",
-          "slug": "warm-brie-and-baguette",
-          "name": "Warm Brie and Baguette",
-          "desc": "Served with sliced apples and fig jam.",
-          "price": "18",
+          "id": "the-italian",
+          "slug": "the-italian",
+          "name": "The Italian",
+          "price": "14.75",
           "options": [],
           "photo": "",
           "home": false,
           "soldOut": false,
           "hidden": false,
           "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "ahi-tuna-salad",
-          "slug": "ahi-tuna-salad",
-          "name": "Ahi Tuna Salad",
-          "desc": "Wild caught tuna, mixed greens, cabbage and carrots with an Asian sesame dressing.",
-          "price": "21",
-          "options": [],
-          "photo": "assets/menu/ahi-tuna-salad.webp",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": true,
           "quote": null,
-          "photoAlt": "Seared sesame-crusted ahi tuna on mixed greens and cabbage"
-        },
+          "desc": "Basil pesto base with melted provolone on freshly made focaccia bread, greens on the side."
+        }
+      ]
+    },
+    {
+      "id": "lets-share",
+      "name": "Let's Share",
+      "note": "",
+      "photo": "",
+      "items": [
         {
-          "id": "caesar-salad",
-          "slug": "caesar-salad",
-          "name": "Caesar Salad",
-          "desc": "Romaine, croutons, Parmesan and house made dressing.",
-          "price": "13",
+          "id": "soup-salad-and-breadsticks",
+          "slug": "soup-salad-and-breadsticks",
+          "name": "Soup, Salad and Breadsticks",
+          "price": "",
           "options": [
             {
-              "name": "Add chicken",
+              "name": "With a cup of soup",
               "note": "",
-              "price": "+5"
+              "price": "12.75"
+            },
+            {
+              "name": "With a bowl of soup",
+              "note": "",
+              "price": "15.75"
             }
           ],
           "photo": "",
@@ -406,50 +416,22 @@
           "soldOut": false,
           "hidden": false,
           "advisory": false,
-          "quote": null
+          "quote": null,
+          "desc": "Served with a family-style salad bowl to share, your choice of soup, and breadsticks: two per person, additional ones .50 each."
         },
         {
-          "id": "house-salad",
-          "slug": "house-salad",
-          "name": "House Salad",
-          "desc": "Spring greens, grape tomatoes, cucumber, sweet peppers, craisins, red onion, bacon, seed crackers and sliced almonds with balsamic dressing.",
-          "price": "12",
+          "id": "artisan-cheese-plate",
+          "slug": "artisan-cheese-plate",
+          "name": "Artisan Cheese Plate",
+          "price": "",
           "options": [],
-          "photo": "assets/menu/house-salad.webp",
+          "photo": "",
           "home": false,
           "soldOut": false,
           "hidden": false,
           "advisory": false,
           "quote": null,
-          "photoAlt": "The house salad with bacon, sliced almonds, red onion, tomatoes and seed crackers, with balsamic dressing on the side"
-        },
-        {
-          "id": "soup-and-salad",
-          "slug": "soup-and-salad",
-          "name": "Soup and Salad",
-          "desc": "Half a house salad and a cup of soup.",
-          "price": "14",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
-        },
-        {
-          "id": "cheese-plate",
-          "slug": "cheese-plate",
-          "name": "Cheese Plate",
-          "desc": "Three cheeses with assorted crackers and bread.",
-          "price": "19.75",
-          "options": [],
-          "photo": "",
-          "home": false,
-          "soldOut": false,
-          "hidden": false,
-          "advisory": false,
-          "quote": null
+          "desc": "Three cheeses accompanied with assorted crackers."
         }
       ]
     },
@@ -473,17 +455,17 @@
             },
             {
               "name": "Pony",
-              "note": "serves 1 to 2",
+              "note": "serves 2",
               "price": "29"
             },
             {
               "name": "Quarter Horse",
-              "note": "serves 3 to 4",
+              "note": "serves 3",
               "price": "75"
             },
             {
               "name": "Arabian",
-              "note": "serves 5 to 6",
+              "note": "serves 4",
               "price": "125"
             }
           ],

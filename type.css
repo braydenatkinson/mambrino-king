@@ -1,0 +1,46 @@
+/* Their own lettering (owner 2026-11-12: "Mambrino King does not use any font and text boldness like you keep using
+   on the site anywhere"). Taken from their logo (raw/brand/logo-from-owner.png): the name is set in thin, squared-off
+   geometric capitals, and Saira Light is the closest Google font (rounded-rectangle O, straight-sided M, squared G,
+   even hairline stroke). The tagline "wine · coffee · chocolate · bistro" is a light, round italic: Jost. Nothing is
+   bold anywhere. Their gold is the logo's own, sampled at #C4B469. This file loads last on every page, so the type
+   is set here and only here (font files: menu.json site.fontsHref and the <link> in index.html). */
+
+:root { --display: 'Saira', 'Segoe UI', sans-serif; --text: 'Jost', 'Segoe UI', sans-serif;
+  --gold: #C4B469; --gold-dim: rgba(196, 180, 105, .24); }
+
+body { font-family: var(--text); font-weight: 400; }
+
+/* no bold, anywhere */
+b, strong, h1, h2, h3, h4, th, dt, dd, button, .btn, .btn-gold, .btn-ink, .entry, .entry-name, .entry-price, .opt-name,
+.opt-price, .dish-price, .race-index a, .hours-list dd, .hours .hours-list dt, .visit .hours-list dt { font-weight: 400; }
+
+/* every display line: their thin capitals, spaced out like the logo */
+.nm, .card-title, .race-name, .post, .made-title, .staff-title, .street-title, .story-title, .hours-title, .visit-title,
+.foot-name, .top-home, .race-index span, .dish-name, .also-title {
+  font-family: var(--display); font-weight: 300; text-transform: uppercase; letter-spacing: .08em; }
+
+/* sizes: thin capitals carry less weight than the old woodtype, so the long lines come down a little and open up */
+.card-title { font-size: clamp(2.3rem, 1.4rem + 4.4vw, 5rem); line-height: 1; letter-spacing: .12em; }
+.race-name, .races-full .race-name { font-size: clamp(1.3rem, 1.05rem + 1.1vw, 1.9rem); line-height: 1.15; letter-spacing: .12em; }
+.post, .race-index span { font-weight: 400; letter-spacing: 0; }
+.made-title, .staff-title, .street-title, .story-title { font-size: clamp(1.9rem, 1.25rem + 2.9vw, 3.6rem); line-height: 1.08; max-width: 18ch; }
+.hours-title, .hours .hours-title, .visit-title, .visit .visit-title { font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem); line-height: 1.05; letter-spacing: .12em; }
+.foot-name { font-size: 1.3rem; letter-spacing: .14em; }
+.top-home { font-size: 1rem; letter-spacing: .14em; }
+.dish-name { font-size: clamp(1.8rem, 1.1rem + 3.2vw, 3.8rem); line-height: 1.08; letter-spacing: .06em; }
+.also-title { font-size: 1.15rem; letter-spacing: .14em; }
+.dish-price { font-weight: 300; }
+
+/* the big italic lines in the tagline's light italic */
+.lede, .made-quote p, .staff-line, .room-quote p, .ribbon p, .dish-desc { font-weight: 300; }
+
+/* the day names on the hours plates, in a lighter shade of their gold */
+.hours .hours-list dt, .visit .hours-list dt { color: #d6ca94; }
+
+/* the pour (index.html) on wide screens: the glass stands in the gap between MAMBRINO and KING. Its place was worked
+   out from the old woodtype's width (7.3 font-sizes); in Saira Light, MAMBRINO plus its tracking ends at 6.24, so
+   the gap opens a little and the glass moves to its middle (6.24 + .42 / 2). */
+@media (min-width: 900px) {
+  .names { gap: .42em; }
+  .hero-stage { --cx: calc(var(--gutter) + var(--fs) * 6.45); }
+}

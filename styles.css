@@ -9,8 +9,8 @@
   --gold: #C9A04A;
   --gold-dim: rgba(201, 160, 74, .22);
   --text-on-dark: rgba(237, 227, 209, .86);
-  --display: 'Ultra', 'Rockwell Extra Bold', serif;
-  --text: 'Old Standard TT', Georgia, serif;
+  --display: 'Saira', 'Segoe UI', sans-serif;  /* their lettering; type.css (loaded last) sets all type */
+  --text: 'Jost', 'Segoe UI', sans-serif;
   --gutter: clamp(1rem, 0.6rem + 1.8vw, 2.5rem);
 }
 *, *::before, *::after { box-sizing: border-box; }
