@@ -47,6 +47,9 @@
   });
 
   window.siteMotion = ({ gsap, ScrollTrigger, lenis }) => {
+    // v2.html has no pour (its opening is coffee.js); it reuses only the reviews, video and link handling further down
+    const mm = gsap.matchMedia();
+    if (window.__pour) {
     if (still) { window.__pour.draw(stillFrame); return; }
     let cur = 0, target = 0, prog = 0;
     const intro = { f: 0 };
@@ -58,7 +61,6 @@
       gsap.to(intro, { f: INTRO, duration: 1.4, delay: .25, ease: 'power1.inOut', onUpdate: setTarget });
     })();
 
-    const mm = gsap.matchMedia();
     mm.add({ wide: '(min-width: 900px)', narrow: '(max-width: 899px)', tall: '(min-height: 600px)' }, (c) => {
       const len = c.conditions.wide ? 200 : 150;
       const st = ScrollTrigger.create(c.conditions.tall ? {
@@ -81,6 +83,7 @@
       if (Math.abs(target - cur) < 0.02) cur = target;
       window.__pour.draw(Math.round(cur));
     });
+    } // end of the pour
 
     // reviews: on wide screens they move sideways with the scroll, far enough to read every one (the move ends at the
     // page bottom, since the ribbon sits just above the short footer). On phones that was ~3 px sideways per 1 px of
